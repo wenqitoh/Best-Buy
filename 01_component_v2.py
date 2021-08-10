@@ -5,7 +5,7 @@ created by Wen-Qi Toh
 
 
 # number checking function
-def num_checker(question):
+def num_check(question):
     error = "You must enter in a number greater than 5."
     valid = False
     while not valid:
@@ -21,4 +21,4 @@ def num_checker(question):
 
 # main routine
 # get budget amount
-budget = num_checker("What is your budget? (must be higher than $5): ")
+budget = num_check("What is your budget? (must be higher than $5): ")
