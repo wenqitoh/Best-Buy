@@ -5,10 +5,10 @@ Created by Wen-Qi Toh
 
 # not blank function
 def not_blank(question):
-    error = "Your category/unit is blank or has a number in it! Please try again."
+    error = "ERROR: Your category/unit is blank or has a number in it! Please try again."
     valid = False   # to create loop
 
-    while not valid:
+    while not valid:    # while valid still = false
         number = False  # assumption that name contains no digits - initially
         response = input(question)
 
@@ -20,6 +20,7 @@ def not_blank(question):
             print(error)
 
         else:  # no error found
+            valid = True    # breaks out of valid loop bc now valid = True bc there is a response, not empty
             return response
 
 
