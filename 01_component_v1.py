@@ -3,7 +3,7 @@ created by Wen-Qi Toh
 3/8/21"""
 
 # main routine
-budget = input("What is your budget? (must be higher than or equal to $5): ")
+budget = input("What is your budget? (you must have at least $5 or more): ")
 
 # error message - if budget is blank or has letters
 error = "Your budget is blank! Please try again."
