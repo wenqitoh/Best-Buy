@@ -37,7 +37,7 @@ while not valid:
         print("Price exceeded budget so it has been removed from the list.")
     else:
         print(price_list)
-        print("Price added to list!")
+        print("Price added to shopping cart!")
 
     print("Here is the price list so far!", price_list)
 
