@@ -1,7 +1,7 @@
 """Component 5 v2 - allow for multiple min/max values,
 output the multiple values not just pick one
 Created by Wen-Qi Toh
-11/8/21"""
+16/8/21"""
 
 
 # for testing purposes, will be using sample data, not user input for list
