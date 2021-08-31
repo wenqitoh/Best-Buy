@@ -37,33 +37,35 @@ while not valid_list:
                         .capitalize()
 
     if products != "X":
-        products = products.split()
+        products = products.split(',')
         print(products)
 
         for line in products:
-            mass = float(products[0])   # removed single_num_check for test purposes
+            mass = single_num_check(products[0])   # removed single_num_check for test purposes
             products.remove(products[0])
             print(mass)
-            price = float(products[-1]) # removed single_num_check for test purposes
+            price = single_num_check(products[-1]) # removed single_num_check for test purposes
             products.remove(products[-1])
             print(price)
             print(line)
             print(products)
             name = " ".join([str(word) for word in products])
             print(name)
+            print(products)
 
             # i made this if stmnt to test is user entered price/mass incorrectly
-            if price == 0.0 or mass == 0.0: # used to be if price/mass is None (to work with single_num_check func)
+            if price == 0.0 and mass == 0.0:
+                unit_price = 0.0
+                print(unit_price)
+                print("Error in entering mass/price. Product has been ignored."
+                      " Please enter correctly in the next prompt.")
+            elif price == 0.0 or mass == 0.0: # used to be if price/mass is None (to work with single_num_check func)
                 unit_price = 0.0    # this unit_price also used to = None
                 print(unit_price)
                 print("Error in entering mass/price. Product has been ignored."
                       " Please enter correctly in the next prompt.")
             # this elif stmnt same as above, but only if 1 or other wrong
-            elif price == 0.0 and mass == 0.0:
-                unit_price = 0.0
-                print(unit_price)
-                print("Error in entering mass/price. Product has been ignored."
-                      " Please enter correctly in the next prompt.")
+
             else:
                 unit_price = round(price / mass, 2)
                 product_info.append([mass, name, price, unit_price])
