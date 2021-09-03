@@ -1,5 +1,6 @@
-"""Component 1 v2 - change get budget amount into num checker function
-using a try/except loop
+"""Component 1 v2 - continuing with method 2 from v1 (try-except loop)
+change get budget amount into num checker function so it can be reused later
+with other components
 created by Wen-Qi Toh
 3/8/21"""
 
