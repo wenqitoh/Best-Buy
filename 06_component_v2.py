@@ -20,7 +20,9 @@ product_list = [[250, 'ch1', 12, 0.05],
 
 best_buy = []
 
-for product in product_list:
+for product in product_list:    # so basically my issue is that when u run this prg,
+            # it doesn't print out if ch2 is accepted or not? I've tried with different numbers and everything like that,
+            # but this prg always skips the 2nd value in the product list. also it does it sometimes w/ the last value, idk why
     if product[2] > 5:  # step 1
         product_list.remove(product)
         unit_price_list.remove(product[3])

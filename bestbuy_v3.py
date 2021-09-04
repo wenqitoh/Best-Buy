@@ -133,7 +133,9 @@ for item in product_info:
 
 # component 5
 # this line account for an empty list OR a lower price
-    if not cheapest or item[2] < cheapest[0]:
+    if not cheapest or item[2] < cheapest[0]:       # so this C5 also has issues as well. it seemed to be working fine
+                                                    # when it was by itslef in C5v2, but once i added it to this main program,
+                                                    # it sometimes doesn't produce the right numbers for cheapest/costliest
         cheapest = [item[2]]
 
     elif item[2] == cheapest[0]:
