@@ -6,8 +6,6 @@ Created by Wen-Qi Toh
 
 # for testing purposes, will be using sample data, not user input for list
 unit_price_list = [10.81, 10.00, 17.37, 15.96, 11.76, 16.50]
-
-not_cheapest = []
 cheapest = []
 costliest = []
 
