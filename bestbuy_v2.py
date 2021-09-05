@@ -23,22 +23,23 @@ def num_check(question):
 
 # checking for blanks function
 def not_blank(question):
-    error = "ERROR: Your category/unit is blank or has a number in it! Please try again."
+    error = "ERROR: Your category/unit is blank or has a number in it! " \
+            "Please try again."
     valid = False   # to create loop
 
     while not valid:    # while valid still = false
         number = False  # assumption that name contains no digits - initially
         response = input(question)
 
-        for letter in response:  # Check for digits in response - category/input
+        for letter in response:  # Check for digits in response-category/input
             if letter.isdigit():  # Tests for True - by default
                 number = True  # sets true if any digit found
-
-        if not response or number == True:  # Generate error for blank name or digit
+        # Generate error for blank name or digit
+        if not response or number == True:
             print(error)
 
         else:  # no error found
-            valid = True    # breaks out of valid loop bc now valid = True bc there is a response, not empty
+            valid = True
             return response
 
 
@@ -54,14 +55,15 @@ def single_num_check(test):
 
 
 # main routine
-# get budget amount
+# get budget amount - component 1
 budget = num_check("What is your budget? (must be higher than $5): ")
-# get category and unit
+# get category and unit - component 2
 category = not_blank("What is your product category? ")
 print("Your product category is {}.".format(category))
 unit = not_blank("What is your product unit? ")
 print("Your product unit for {} is {}.".format(category, unit))
 
+# component 7
 # lists and variables
 unit_price_list = []
 product_info = []
@@ -105,18 +107,9 @@ while not valid_list:
                     print(name_unit_price)
                     unit_price_list.append(unit_price)
                     print(unit_price_list)
-
-                    # if not cheapest or unit_price < cheapest[0]:
-                    #     cheapest = unit_price
-                    # elif unit_price == cheapest[0]:
-                    #     cheapest.append(unit_price)
-                    # if not costliest or unit_price > costliest[0]:
-                    #     costliest = unit_price
-                    # elif unit_price == costliest[0]:
-                    #     costliest.append(unit_price)
-
             except IndexError:
                 print(error_msg)
+
     # making sure list has at least 2 products to compare
     elif len(product_info) < 2:
         print("ERROR: Please enter at least 2 products to compare.")
@@ -135,9 +128,11 @@ total_unit_price = 0.0
 cheapest = []
 costliest = []
 for item in product_info:
-    print(f"The unit price of {item[1]} is ${item[2]}/{item[0]} = {round(item[3],4)}")
+    print(f"The unit price of {item[1]} is ${item[2]}/{item[0]} = "
+          f"{round(item[3],4)}")
     count += 1
     total_unit_price += round(item[3], 4)
+
 # component 5
 # this line account for an empty list OR a lower price
     if not cheapest or item[2] < cheapest[0]:

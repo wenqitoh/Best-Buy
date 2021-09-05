@@ -23,22 +23,23 @@ def num_check(question):
 
 # checking for blanks function
 def not_blank(question):
-    error = "ERROR: Your category/unit is blank or has a number in it! Please try again."
+    error = "ERROR: Your category/unit is blank or has a number in it! " \
+            "Please try again."
     valid = False   # to create loop
 
     while not valid:    # while valid still = false
         number = False  # assumption that name contains no digits - initially
         response = input(question)
 
-        for letter in response:  # Check for digits in response - category/input
+        for letter in response:  # Check for digits in response-category/input
             if letter.isdigit():  # Tests for True - by default
                 number = True  # sets true if any digit found
-
-        if not response or number == True:  # Generate error for blank name or digit
+        # Generate error for blank name or digit
+        if not response or number == True:
             print(error)
 
         else:  # no error found
-            valid = True    # breaks out of valid loop bc now valid = True bc there is a response, not empty
+            valid = True
             return response
 
 
@@ -128,7 +129,8 @@ cheapest = []
 costliest = []
 
 for item in product_info:
-    print(f"The unit price of {item[1]} is ${item[2]}/{item[0]} = {round(item[3],4)}")
+    print(f"The unit price of {item[1]} is ${item[2]}/{item[0]} = "
+          f"{round(item[3],4)}")
     count += 1
     total_unit_price += round(item[3], 4)
 

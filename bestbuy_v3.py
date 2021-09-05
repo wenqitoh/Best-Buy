@@ -1,7 +1,7 @@
 """Assembled Program Best-Buy 3
-add C6 to best-buy 2
+add C6 to best-buy 2.5
 created by Wen-Qi Toh
-1/9/21"""
+5/9/21"""
 
 
 # functions
@@ -23,22 +23,23 @@ def num_check(question):
 
 # checking for blanks function
 def not_blank(question):
-    error = "ERROR: Your category/unit is blank or has a number in it! Please try again."
+    error = "ERROR: Your category/unit is blank or has a number in it! " \
+            "Please try again."
     valid = False   # to create loop
 
     while not valid:    # while valid still = false
         number = False  # assumption that name contains no digits - initially
         response = input(question)
 
-        for letter in response:  # Check for digits in response - category/input
+        for letter in response:  # Check for digits in response-category/input
             if letter.isdigit():  # Tests for True - by default
                 number = True  # sets true if any digit found
-
-        if not response or number == True:  # Generate error for blank name or digit
+        # Generate error for blank name or digit
+        if not response or number == True:
             print(error)
 
         else:  # no error found
-            valid = True    # breaks out of valid loop bc now valid = True bc there is a response, not empty
+            valid = True
             return response
 
 
@@ -127,54 +128,56 @@ total_unit_price = 0.0
 cheapest = []
 costliest = []
 for item in product_info:
-    print(f"The unit price of {item[1]} is ${item[2]}/{item[0]} = {round(item[3],4)}")
+    print(f"The unit price of {item[1]} is ${item[2]}/{item[0]} = "
+          f"{round(item[3],4)}")
     count += 1
     total_unit_price += round(item[3], 4)
 
-# component 5
-# this line account for an empty list OR a lower price
-    if not cheapest or item[2] < cheapest[0]:       # so this C5 also has issues as well. it seemed to be working fine
-                                                    # when it was by itslef in C5v2, but once i added it to this main program,
-                                                    # it sometimes doesn't produce the right numbers for cheapest/costliest
-        cheapest = [item[2]]
+# component 5 - revised
+    # this line account for an empty list OR a lower price
+    if not cheapest or item[2] < cheapest[0][1]:
+        cheapest = [(item[1], item[2])]
+    elif item[2] == cheapest[0][1]:
+        cheapest.append((item[1], item[2]))
+    # this line account for an empty list OR a higher price
+    if not costliest or item[2] > costliest[0][1]:
+        costliest = [(item[1], item[2])]
 
-    elif item[2] == cheapest[0]:
-        cheapest.append(item[2])
-
-# this line account for an empty list OR a higher price
-    elif not costliest or item[2] > costliest[0]:
-        costliest = [item[2]]
-
-    elif item[2] == costliest[0]:
-        costliest.append(item[2])
-
-av_unit_price = sum(unit_price_list) / len(unit_price_list)
-print("Average unit price: ${}".format(round(av_unit_price, 2)))
+    elif item[2] == costliest[0][1]:
+        costliest.append((item[1], item[2]))
 
 # display min/max
-print(f"cheapest: {cheapest}")
-print(f"costliest: {costliest}")
+print("cheapest product:")
+for s in cheapest:
+    print(", ".join(str(e) for e in s))
+print("\ncostliest product:")
+for s in costliest:
+    print(", ".join(str(e) for e in s))
 
 # component 6 - best buy recommendation
 best_buy = []
-print("Your budget is ${}".format(budget))
-for product in product_info:
-    if product[2] > 5:  # step 1
-        product_info.remove(product)
-        unit_price_list.remove(product[3])
+print("\nYour budget is ${}".format(budget))
 
+new_product_list = []
+new_upl = []
+
+for product in product_info:
+    if product[2] > budget:  # step 1
+        # product_list.remove(product)
         print("The product '{}' has been removed from product list as "
               "the price exceeds the budget.".format(product[1]))
 
-    elif product[2] <= 5:   # step 2
-        print("product {} accepted".format(product[1]))
-        if product[3] < min(unit_price_list):
-            best_buy = product
-            print("if {}".format(best_buy))
-        elif product[3] == min(unit_price_list):
-            best_buy.append(product)
-            print("product {} accepted".format(product[1]))
-            print("best buy so far: {}".format(best_buy))
+    elif product[2] <= budget:   # step 2
+        new_product_list.append(product)
+        new_upl.append(product[3])
 
-# final output
-print("\nThe recommended best buy/s for you is: {}".format(best_buy))
+for new_product in new_product_list:
+    # this line account for an empty list OR a lower price
+    if not best_buy or new_product[3] < best_buy[0][3]:
+        best_buy = [new_product]
+    elif new_product[3] == best_buy[0][3]:
+        best_buy.append(new_product)
+
+print("The recommended best buy/s for you is:")
+for item in best_buy:
+    print(' - '.join(str(x) for x in item))
