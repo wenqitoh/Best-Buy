@@ -54,14 +54,15 @@ def single_num_check(test):
 
 
 # main routine
-# get budget amount
+# get budget amount - component 1
 budget = num_check("What is your budget? (must be higher than $5): ")
-# get category and unit
+# get category and unit - component 2
 category = not_blank("What is your product category? ")
 print("Your product category is {}.".format(category))
 unit = not_blank("What is your product unit? ")
 print("Your product unit for {} is {}.".format(category, unit))
 
+# component 7
 # lists and variables
 unit_price_list = []
 product_info = []
