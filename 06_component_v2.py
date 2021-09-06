@@ -24,7 +24,6 @@ new_upl = []
 
 for product in product_list:
     if product[2] > 5:  # step 1
-        # product_list.remove(product)
         print("The product '{}' has been removed from product list as "
               "the price exceeds the budget.\n".format(product[1]))
 
