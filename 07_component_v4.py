@@ -7,19 +7,6 @@ use try/except loop to account for error of not using commas when entering info
 
 
 # functions
-def not_blank(question):
-    error = "ERROR: Please enter in the name of your product (cannot be blank)"
-    valid = False   # to create loop
-
-    while not valid:
-        response = input(question)
-
-        if not response:  # checks if product name has been entered
-            print(error)
-        else:  # no error found
-            return response
-
-
 def single_num_check(test):
     number = ""
     while not number:
@@ -38,7 +25,7 @@ error_msg = "ERROR: you have entered your product information incorrectly. " \
 valid_list = False
 while not valid_list:
     # calling not blank function and providing question
-    products = not_blank("Please enter product mass, name, then price - please"
+    products = input("Please enter product mass, name, then price - please"
                          " separate using commas. (or enter 'X' to exit): ")\
                         .capitalize()
     if products != "X":
